@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+//variaveis para configuração do maven
+group = 'com.fsantana.library' // Change this to match your package name
+version = '0.0.1'
+
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+//gerando source jar
+//o padrão do maven necessita que a lib tenha um jar file contento o source
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
+
+//gerando java doc
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavaDocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavaDocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavaDocsJar
+    archives generateSourcesJar
+}
+
+bintray {
+    user = 'scienvitarso'
+    key = '8cc646c7c6a0d5dac2750916a32dac2798aa6e13'
+    pkg {
+        repo = 'maven'
+        name = 'com.fsantana.frenchfries'
+
+        version {
+            name = '0.0.1-beta'
+            desc = 'Essa é uma pessoal library que junta tudo que eu acho necessario para os ' +
+                    'meus projetos android'
+            released  = new Date()
+            vcsTag = '0.0.1'
+        }
+        vcsUrl = 'https://github.com/Scienvitarso/SampleLibraryBintray.git'
+        licenses = ['Apache-2.0']
+
+    }
+    configurations = ['archives']
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
