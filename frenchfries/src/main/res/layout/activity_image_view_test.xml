@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.ImageViewTestActivity">
+
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioFourThree
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_four_three"/>
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioOneOne
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_one_one"/>
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioSixTeenNine
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_sixteen_nine"/>
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioThreeFour
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_three_four"/>
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioThreeTwo
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_three_two"/>
+    <com.fsantana.frenchfries.ImageRatio.ImageViewRatioTwoThree
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/imageview_ratio_two_three"/>
+</FrameLayout>
